@@ -60,7 +60,7 @@ public class ConsoleMindfulMornings {
         System.out.println("Enter your choice:");
     }
 
-    private void handleMainMenu(String option) {
+    void handleMainMenu(String option) {
         switch (option) {
             case "1":
                 currentMenu = "Morning Routine";
@@ -69,7 +69,7 @@ public class ConsoleMindfulMornings {
                 startMeditationSession();
                 break;
             case "3":
-                recordGratitudeEntry();
+                recordGratitudeEntry("Feeling grateful for nature.");
                 break;
             case "4":
                 currentMenu = "View Morning Routine";
@@ -84,7 +84,7 @@ public class ConsoleMindfulMornings {
         }
     }
 
-    private void handleMorningRoutineMenu(String option) {
+    void handleMorningRoutineMenu(String option) {
         if (option.equals("done")) {
             currentMenu = "Main Menu";
             System.out.println("Morning routine saved: " + morningRoutine);
@@ -93,7 +93,7 @@ public class ConsoleMindfulMornings {
         }
     }
 
-    private void startMeditationSession() {
+    void startMeditationSession() {
         // Simulate a meditation session with a timer countdown
         System.out.println("Starting meditation session...");
         for (int i = 10; i > 0; i--) {
@@ -107,9 +107,9 @@ public class ConsoleMindfulMornings {
         System.out.println("Meditation session completed.");
     }
 
-    private void recordGratitudeEntry() {
+    void recordGratitudeEntry(String entry) {
         System.out.println("Enter your gratitude entry:");
-        String entry = scanner.nextLine();
+        if (entry.isEmpty()) entry = scanner.nextLine();
         gratitudeEntries.add(entry);
         System.out.println("Gratitude entry recorded: " + entry);
     }
@@ -136,5 +136,21 @@ public class ConsoleMindfulMornings {
             }
         }
         currentMenu = "Main Menu";
+    }
+
+    public String getCurrentMenu() {
+        return currentMenu;
+    }
+
+    public void setCurrentMenu(String morningRoutine) {
+        this.currentMenu = morningRoutine;
+    }
+
+    public List<String> getMorningRoutine() {
+        return morningRoutine;
+    }
+
+    public List<String> getGratitudeEntries() {
+        return gratitudeEntries;
     }
 }
