@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         AssertTests.class,
-        ParameterizedTests.class
+        ParameterizedTests.class,
+        ExceptionHandlingTests.class
 })
 public class AllTests {
 }

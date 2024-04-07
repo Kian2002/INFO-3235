@@ -70,7 +70,7 @@ public class ConsoleMindfulMornings {
                 startMeditationSession();
                 break;
             case "3":
-                recordGratitudeEntry("Feeling grateful for nature.");
+                recordGratitudeEntry();
                 break;
             case "4":
                 currentMenu = "View Morning Routine";
@@ -111,10 +111,26 @@ public class ConsoleMindfulMornings {
     }
 
     void recordGratitudeEntry(String entry) {
+            if (entry == null) {
+                throw new NullPointerException("Gratitude entry cannot be null.");
+            } else if (entry.isEmpty()) {
+                throw new IllegalArgumentException("Gratitude entry cannot be empty.");
+            } else {
+                System.out.println("Enter your gratitude entry:");
+                gratitudeEntries.add(entry);
+                System.out.println("Gratitude entry recorded: " + entry);
+            }
+    }
+
+    void recordGratitudeEntry() {
         System.out.println("Enter your gratitude entry:");
-        if (entry.isEmpty()) entry = scanner.nextLine();
-        gratitudeEntries.add(entry);
-        System.out.println("Gratitude entry recorded: " + entry);
+        String entry = scanner.nextLine();
+            if (entry.isEmpty()) {
+                throw new IllegalArgumentException("Gratitude entry cannot be empty.");
+            } else {
+                gratitudeEntries.add(entry);
+                System.out.println("Gratitude entry recorded: " + entry);
+            }
     }
 
     private void viewMorningRoutine() {
