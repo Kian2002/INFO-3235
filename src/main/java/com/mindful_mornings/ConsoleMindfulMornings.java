@@ -2,6 +2,7 @@ package com.mindful_mornings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ConsoleMindfulMornings {
@@ -85,7 +86,9 @@ public class ConsoleMindfulMornings {
     }
 
     void handleMorningRoutineMenu(String option) {
-        if (option.equals("done")) {
+        if (Objects.equals(option, "")) {
+            System.out.println("Task cannot be empty. Please enter a valid task.");
+        } else if (option.equals("done")) {
             currentMenu = "Main Menu";
             System.out.println("Morning routine saved: " + morningRoutine);
         } else {
